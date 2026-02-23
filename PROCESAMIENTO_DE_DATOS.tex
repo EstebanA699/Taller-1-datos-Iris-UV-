@@ -1,0 +1,436 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{titlesec}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\title{\textbf{RESULTADOS Y GRÁFICOS}}
+\author{
+    Esteban Adolfo -- 202516875 \and
+    Santiago Velásquez -- 202518075 \and
+    Luis Daniel Achicanoy -- 202520354
+}
+\date{
+    Escuela de Estadística, Facultad de Ingeniería\\
+    Universidad del Valle, Cali, Colombia
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+El presente trabajo tuvo como objetivo desarrollar un análisis descriptivo del conjunto de datos Iris, compuesto por 150 registros correspondientes a tres especies de flores: \textit{Iris setosa}, \textit{Iris versicolor} e \textit{Iris virginica}. Inicialmente, el archivo en formato \texttt{.txt} fue convertido a \texttt{.xlsx} para facilitar su procesamiento en Microsoft Excel. Posteriormente, se calcularon medidas de tendencia central (media y mediana), medidas de dispersión (desviación estándar y cuartiles), valores máximos y mínimos, así como matrices de correlación entre las variables cuantitativas.
+
+Además, se elaboraron representaciones gráficas como histogramas, diagramas de cajas y diagramas de dispersión, con el fin de visualizar la distribución de los datos y las relaciones entre variables.
+\end{abstract}
+
+\section{Introducción}
+
+El presente trabajo es el resultado de la resolución del ``Taller 1'' (Anexo 1) del curso de procesamiento de datos (761017M) de la Universidad del Valle dictado por el profesor Andrés Ochoa.
+
+\section{Metodología}
+
+Para el desarrollo del ``Taller 1'' se trabajó con el popularmente conocido ``conjunto de datos de flor Iris'', inicialmente los datos estaban contenidos en el archivo \texttt{Iris.txt} en el cual se encuentran 150 entradas de datos de 3 especies de flor Iris (\textit{I. Setosa}, \textit{I. Versicolor}, \textit{I. Virginica}). Para cada una de estas entradas estaban registradas las variables cuantitativas Longitud del Sépalo (\texttt{Sepal.Length}), Ancho del Sépalo (\texttt{Sepal.Width}), Longitud del Pétalo (\texttt{Petal.Length}), Ancho del Pétalo (\texttt{Petal.Width}) y la variable cualitativa Especie. Haciendo uso de Microsoft Excel (2024 LTSC) se realizó un análisis descriptivo de los datos en el que se calculó para cada una de las variables medidas de tendencia central, medidas de dispersión y se investigaron correlaciones, además se realizaron diferentes representaciones gráficas para ilustrar lo realizado. Finalmente, haciendo uso de Overleaf se redactó un informe (el presente) en el que se exponen los hallazgos realizados y las conclusiones a que se llegó.
+
+\section{Objetivos}
+
+\subsection*{General}
+
+Desarrollar el ``Taller 1'' propuesto en el curso de procesamiento de datos haciendo uso de Microsoft Excel (2024 LTSC) y Overleaf para organizar el archivo de datos \texttt{Iris.txt}, realizar un análisis descriptivo de estos y redactar un informe de lo realizado.
+
+\subsection*{Específicos}
+
+\begin{itemize}
+    \item Convertir el archivo \texttt{iris.txt} en un archivo \texttt{xlsx} para realizar el adecuado análisis descriptivo de los datos mediante el uso de Microsoft Excel (2024 LTSC).
+    \item Calcular promedio, mediana, valor máximo y mínimo, desviación estándar y cuartiles para cada una de las variables cuantitativas y para estas en su conjunto.
+    \item Realizar gráficos de barras, histogramas y diagramas de caja y bigotes para cada una de las variables.
+    \item Realizar matrices de correlación entre las variables cuantitativas registradas agrupándolas por especie y considerándolas globalmente.
+    \item Realizar diagramas de dispersión para cada Pearson $> 0{,}70$.
+    \item Realizar un informe (el presente) haciendo uso de Overleaf en el que se expongan los hallazgos y conclusiones a que se llegó.
+\end{itemize}
+
+\section{Marco Teórico}
+
+El presente marco teórico sustenta el análisis descriptivo realizado al conjunto de datos Iris. En este apartado se desarrollan los conceptos estadísticos fundamentales necesarios para comprender los procedimientos aplicados, tales como medidas de tendencia central, medidas de dispersión, representaciones gráficas y análisis de correlación.
+
+\subsection{Análisis descriptivo}
+
+El análisis descriptivo es una rama de la estadística que permite organizar, resumir y presentar datos mediante medidas numéricas y representaciones gráficas. Su objetivo principal es describir las características principales de un conjunto de datos sin realizar inferencias.
+
+\subsection{El conjunto de datos Iris}
+
+El conjunto de datos Iris fue introducido por el estadístico y biólogo Ronald Fisher en 1936. Este dataset contiene información sobre 150 muestras de flores clasificadas en tres especies diferentes:
+
+\begin{itemize}
+    \item \textit{Iris setosa}
+    \item \textit{Iris versicolor}
+    \item \textit{Iris virginica}
+\end{itemize}
+
+Las variables numéricas analizadas son:
+
+\begin{itemize}
+    \item Longitud del sépalo
+    \item Ancho del sépalo
+    \item Longitud del pétalo
+    \item Ancho del pétalo
+\end{itemize}
+
+Además, incluye una variable cualitativa correspondiente a la especie de la flor. Este conjunto es ampliamente utilizado en análisis exploratorio de datos debido a su estructura clara y a la presencia de variables tanto cuantitativas como cualitativas.
+
+\subsection{Medidas de tendencia central}
+
+Las medidas de tendencia central permiten identificar el valor representativo o central de un conjunto de datos:
+
+\begin{itemize}
+    \item \textbf{Media aritmética:} promedio de los valores.
+    \item \textbf{Mediana:} valor central cuando los datos están ordenados.
+    \item \textbf{Máximo y mínimo:} valores extremos del conjunto.
+\end{itemize}
+
+Estas medidas permiten comprender la ubicación general de los datos y detectar posibles asimetrías.
+
+\subsection{Medidas de dispersión}
+
+Las medidas de dispersión indican qué tan alejados están los datos respecto a la media:
+
+\begin{itemize}
+    \item \textbf{Desviación estándar:} mide la variabilidad promedio.
+    \item \textbf{Cuartiles:} dividen el conjunto de datos en cuatro partes iguales.
+    \item \textbf{Rango intercuartílico:} diferencia entre el tercer y primer cuartil.
+\end{itemize}
+
+Estas medidas permiten evaluar la homogeneidad o variabilidad dentro de cada variable numérica.
+
+\subsection{Representaciones gráficas}
+
+\paragraph{Histograma.}
+El histograma muestra la frecuencia de los valores agrupados en intervalos, permitiendo observar la forma de la distribución (simétrica, sesgada, multimodal, etc.).
+
+\paragraph{Diagrama de cajas y bigotes.}
+El diagrama de cajas representa:
+\begin{itemize}
+    \item Mediana
+    \item Cuartiles
+    \item Valores extremos
+    \item Posibles valores atípicos
+\end{itemize}
+
+En este caso, se utiliza para comparar variables numéricas según la especie (variable cualitativa), lo cual permite observar diferencias entre grupos.
+
+\subsection{Matriz de correlación}
+
+La correlación mide el grado de relación lineal entre dos variables cuantitativas. Se expresa mediante el coeficiente de correlación de Pearson, cuyo valor oscila entre $-1$ y $1$:
+
+\begin{itemize}
+    \item Cercano a $1$: relación positiva fuerte.
+    \item Cercano a $-1$: relación negativa fuerte.
+    \item Cercano a $0$: poca o ninguna relación.
+\end{itemize}
+
+La matriz de correlación permite analizar simultáneamente la relación entre todas las variables numéricas del conjunto de datos.
+
+\subsection{Diagrama de dispersión}
+
+El diagrama de dispersión representa gráficamente la relación entre dos variables cuantitativas. Cuando se identifican las variables más correlacionadas, este gráfico permite visualizar la tendencia y confirmar la fuerza de la relación observada en la matriz de correlación.
+
+\section{Hallazgos}
+
+En el presente apartado se exponen los resultados y las observaciones encontradas tras la realización del análisis descriptivo del conjunto de datos Iris.
+
+\subsection{Distribución}
+
+El archivo de datos se compone de 150 entradas, en las que se registran longitud del sépalo, ancho del sépalo, longitud del pétalo, ancho del pétalo y especie, siendo las primeras 4 variables de tipo cuantitativo continuo y la última de tipo cualitativo nominal, a esta corresponden los valores ``Setosa'', ``Versicolor'' y ``Virginica'', que hacen referencia a los nombres de 3 especies de flor Iris. A cada una de estas especies le corresponden 50 entradas en el archivo de datos; la distribución es por tanto uniforme respecto de la variable especie. Esta información se resume en la Figura~\ref{fig:distribucion}.
+
+\begin{table}[h!]
+\centering
+\caption{Distribución por especie}
+\label{fig:distribucion}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Especie} & \textbf{n} & \textbf{f} & \textbf{N} & \textbf{H} \\
+\midrule
+setosa     & 50  & 33\% & 50  & 33\%  \\
+versicolor & 50  & 33\% & 100 & 67\%  \\
+virginica  & 50  & 33\% & 150 & 100\% \\
+\midrule
+total      & 150 &      &     &       \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Respecto de las variables cuantitativas se construyeron histogramas considerando todos los datos y también discriminando por especie, los cuales permitieron observar distribuciones no uniformes de los datos. (Ver archivo de Excel)
+
+\subsection{Valores máximos y mínimos}
+
+Se construyeron dos tablas en las que se resumen los valores máximos y mínimos que toman las variables cuantitativas globalmente y discriminadas por especie.
+
+\begin{table}[h!]
+\centering
+\caption{Valores mínimos por especie}
+\label{fig:minimos}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Especie} & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+setosa     & 4,30 & 2,30 & 1,00 & 0,10 \\
+versicolor & 4,90 & 2,00 & 3,00 & 1,00 \\
+virginica  & 4,90 & 2,20 & 4,50 & 1,40 \\
+global     & 4,30 & 2,00 & 1,00 & 0,10 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Valores máximos por especie}
+\label{fig:maximos}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Especie} & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+setosa     & 5,80 & 4,40 & 1,90 & 0,60 \\
+versicolor & 7,00 & 3,40 & 5,10 & 1,80 \\
+virginica  & 7,90 & 3,80 & 6,90 & 2,50 \\
+global     & 7,90 & 4,40 & 6,90 & 2,50 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Se observa que en general la \textit{I.~virginica} posee los mínimos más altos en comparación de la \textit{I.~Setosa} que en general posee los valores mínimos más bajos, y la \textit{I.~versicolor} que en general posee valores mínimos intermedios con relación a \textit{I.~virginica} y a \textit{I.~setosa}. Un patrón análogo se observa al considerar los valores máximos.
+
+Se construyeron diagramas de barras que permiten visualizar la información contenida en estas tablas. (Ver archivo de Excel)
+
+\subsection{Medidas de tendencia central}
+
+Se calcularon promedios y medianas considerando la globalidad de los datos y discriminándolos por especie; esta información se resume en las dos tablas a continuación.
+
+\begin{table}[h!]
+\centering
+\caption{Promedios por especie}
+\label{fig:promedios}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Especie} & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+setosa     & 5,01 & 3,43 & 1,46 & 0,25 \\
+versicolor & 5,94 & 2,77 & 4,26 & 1,33 \\
+virginica  & 6,59 & 2,97 & 5,55 & 2,03 \\
+global     & 5,84 & 3,06 & 3,76 & 1,20 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Medianas por especie}
+\label{fig:medianas}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Especie} & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+setosa     & 5,00 & 3,40 & 1,50 & 0,20 \\
+versicolor & 5,90 & 2,80 & 4,20 & 1,30 \\
+virginica  & 6,50 & 3,00 & 5,55 & 2,00 \\
+global     & 5,80 & 3,00 & 4,35 & 1,30 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Siguiendo el patrón observado al considerar los valores mínimos y máximos, se observa que la \textit{I.~virginica} presenta los promedios y las medianas más altas, la \textit{I.~setosa} presenta los valores más bajos y la \textit{I.~versicolor} los valores intermedios. Cabe señalar que para la variable ancho de sépalo se observa un comportamiento totalmente distinto, en el que la \textit{I.~setosa} presenta los valores más altos, la \textit{I.~virginica} los medios y la \textit{I.~versicolor} los más bajos.
+
+Se construyeron diagramas de barras que permiten visualizar la información contenida en estas tablas. (Ver archivo de Excel)
+
+\subsection{Medidas de dispersión}
+
+Se calcularon cuartiles y desviaciones estándar considerando los datos globalmente y también discriminados por especie; esta información se resume en las tablas a continuación. Además, se realizaron diagramas de cajas y bigotes que permiten visualizar los cuartiles. (Ver archivo de Excel)
+
+\begin{table}[h!]
+\centering
+\caption{Desviación estándar por especie}
+\label{fig:desviacion}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Especie} & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+setosa     & 2,76 & 0,38 & 2,28 & 0,11 \\
+versicolor & 0,52 & 0,31 & 2,10 & 0,20 \\
+virginica  & 0,64 & 2,86 & 0,55 & 0,27 \\
+global     & 0,83 & 0,44 & 1,77 & 0,76 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Cuartiles por especie}
+\label{fig:cuartiles}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Variable / Especie} & \textbf{setosa} & \textbf{versicolor} & \textbf{virginica} & \textbf{Percentil} \\
+\midrule
+\multirow{3}{*}{Sepal.Length} & 4,80 & 5,60 & 6,23 & 25\% \\
+                               & 5,00 & 5,90 & 6,50 & 50\% \\
+                               & 5,20 & 6,30 & 6,90 & 75\% \\
+\midrule
+\multirow{3}{*}{Sepal.Width}  & 3,20 & 2,53 & 2,80 & 25\% \\
+                               & 3,40 & 2,80 & 3,00 & 50\% \\
+                               & 3,68 & 3,00 & 3,18 & 75\% \\
+\midrule
+\multirow{3}{*}{Petal.Length} & 1,40 & 4,00 & 5,10 & 25\% \\
+                               & 1,50 & 4,35 & 5,55 & 50\% \\
+                               & 1,58 & 4,60 & 5,88 & 75\% \\
+\midrule
+\multirow{3}{*}{Petal.Width}  & 0,20 & 1,20 & 1,80 & 25\% \\
+                               & 0,20 & 1,30 & 2,00 & 50\% \\
+                               & 0,30 & 1,50 & 2,30 & 75\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Cuartiles globales}
+\label{fig:cuartiles_globales}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Variable} & \textbf{Valor} & \textbf{Percentil} \\
+\midrule
+\multirow{3}{*}{Sepal.Length} & 5,1 & 25\% \\
+                               & 5,8 & 50\% \\
+                               & 6,4 & 75\% \\
+\midrule
+\multirow{3}{*}{Sepal.Width}  & 2,8 & 25\% \\
+                               & 3,0 & 50\% \\
+                               & 3,3 & 75\% \\
+\midrule
+\multirow{3}{*}{Petal.Length} & 1,6  & 25\% \\
+                               & 4,35 & 50\% \\
+                               & 5,1  & 75\% \\
+\midrule
+\multirow{3}{*}{Petal.Width}  & 0,3 & 25\% \\
+                               & 1,3 & 50\% \\
+                               & 1,8 & 75\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Los diagramas de cajas y bigotes realizados permiten observar que la especie \textit{I.~virginica} tiene los valores más altos de las variables cuantitativas, excepto para el ancho del sépalo, en la que es la especie \textit{I.~Setosa} la que tiene los valores más altos. Esta misma especie posee los valores más bajos en las variables restantes. Respecto a \textit{I.~versicolor}, esta especie posee valores intermedios respecto a \textit{I.~virginica} y a \textit{I.~Setosa}, excepto para el ancho del sépalo, variable en la que tiene los valores más bajos.
+
+\section{Correlación}
+
+Al igual que en los apartados anteriores, al investigar las correlaciones se realizaron matrices de correlación discriminando por especie y considerando los datos globalmente; se realizaron diagramas de dispersión para los coeficientes de Pearson $> 0{,}70$. (Ver archivo de Excel). A continuación, se presentan las matrices de correlación.
+
+\begin{table}[h!]
+\centering
+\caption{Matriz de correlación -- \textit{Setosa}}
+\label{fig:corr_setosa}
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+Sepal.Length & 1          &            &            &   \\
+Sepal.Width  & 0,7425     & 1          &            &   \\
+Petal.Length & 0,2672     & 0,1777     & 1          &   \\
+Petal.Width  & 0,2781     & 0,2328     & 0,3316     & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Matriz de correlación -- \textit{Versicolor}}
+\label{fig:corr_versicolor}
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+Sepal.Length & 1          &            &            &   \\
+Sepal.Width  & 0,5259     & 1          &            &   \\
+Petal.Length & 0,7540     & 0,5605     & 1          &   \\
+Petal.Width  & 0,5465     & 0,6640     & 0,7867     & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Matriz de correlación -- \textit{Virginica}}
+\label{fig:corr_virginica}
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+Sepal.Length & 1          &            &            &   \\
+Sepal.Width  & 0,4572     & 1          &            &   \\
+Petal.Length & 0,8642     & 0,4010     & 1          &   \\
+Petal.Width  & 0,2811     & 0,5377     & 0,3221     & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Matriz de correlación -- Global}
+\label{fig:corr_global}
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{Sepal.Length} & \textbf{Sepal.Width} & \textbf{Petal.Length} & \textbf{Petal.Width} \\
+\midrule
+Sepal.Length & 1           &             &            &   \\
+Sepal.Width  & $-0,1176$   & 1           &            &   \\
+Petal.Length & $0,8718$    & $-0,4284$   & 1          &   \\
+Petal.Width  & $0,8179$    & $-0,3661$   & $0,9629$   & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Se observa que al considerar los datos globalmente aparecen correlaciones que no siempre existen al considerar los datos discriminados por especie, siendo la correlación más fuerte globalmente entre el ancho y el largo del pétalo, correlación que solo aparece fuertemente en la especie \textit{I.~versicolor}; seguida de la correlación entre el largo del sépalo y el largo del pétalo, la cual aparece en la \textit{I.~virginica} y la \textit{I.~versicolor}; le sigue la correlación entre el largo del sépalo y el ancho del pétalo, la cual no aparece fuertemente en ninguna de las especies. Finalmente, en la \textit{I.~setosa} existe una correlación fuerte entre el largo y ancho del sépalo, la cual desaparece al considerar los datos globalmente.
+
+\section{Conclusiones}
+
+\begin{enumerate}
+    \item El análisis descriptivo del conjunto de datos Iris permitió identificar diferencias claras entre las tres especies estudiadas. En particular, las variables relacionadas con el pétalo (longitud y ancho) son las más determinantes para distinguir entre \textit{Iris setosa}, \textit{Iris versicolor} e \textit{Iris virginica}, porque son las variables en las que existen las mayores diferencias porcentuales en sus valores entre especies.
+
+    \item Se evidencia que la especie \textit{I.~virginica} presenta los valores más altos en la mayoría de las variables cuantitativas, mientras que \textit{I.~setosa} muestra los valores más bajos.
+
+    \item La aplicación de medidas de tendencia central, dispersión, histogramas, diagramas de cajas y matrices de correlación permitió comprender de manera integral la estructura y comportamiento de los datos. En especial, la fuerte correlación positiva entre la longitud y el ancho del pétalo que aparece al considerar los datos globalmente confirma una relación lineal significativa entre estas variables, lo cual es confirmación de la primera conclusión.
+
+    \item El uso de herramientas tecnológicas potencia y eleva las posibilidades y la información que nos puede brindar la realización del análisis descriptivo de los datos.
+\end{enumerate}
+
+\appendix
+
+\section{Taller 1}
+
+\begin{enumerate}
+    \item Convierta los datos \texttt{txt} a un archivo \texttt{xlsx}.
+    \item Para las variables numéricas encuentre media, mediana, máximo, mínimo, desviación estándar y cuartiles.
+    \item Realice gráficos histograma para las variables numéricas.
+    \item Realice diagrama de cajas por grupo, es decir, en el eje $y$ se tenga una variable numérica y en el eje $x$ se tenga una variable cualitativa.
+    \item Construya la matriz de correlación de todas las variables numéricas.
+    \item Con base al punto anterior encuentre el par de variables más correlacionadas y represéntelas en un diagrama de dispersión.
+    \item Interprete los resultados y gráficos; realice un informe con todo lo encontrado.
+\end{enumerate}
+
+\section*{Repositorio de GitHub}
+
+\url{https://github.com/EstebanA699/Taller-1-datos-Iris-UV-}
+
+\end{document}
